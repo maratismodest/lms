@@ -4,9 +4,8 @@ import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Routes,} from "react-router-dom";
 import App from './App';
 import {store} from './app/store';
-import Css from "./components/Css/Css";
-import Html from "./components/Html/Html";
-import Javascript from "./components/Javascript/Javascript";
+import Course from "./components/Course/Course";
+import Lesson from "./components/Lesson/Lesson";
 import MainLayout from "./components/MainLayout";
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
@@ -21,9 +20,8 @@ root.render(
                 <MainLayout>
                     <Routes>
                         <Route path="/" element={<App/>}/>
-                        <Route path="html" element={<Html/>}/>
-                        <Route path="css" element={<Css/>}/>
-                        <Route path="javascript" element={<Javascript/>}/>
+                        <Route path="/:name" element={<Course/>}/>
+                        <Route path="/:name/:id" element={<Lesson/>}/>
                     </Routes>
                 </MainLayout>
             </BrowserRouter>
@@ -31,3 +29,10 @@ root.render(
     </React.StrictMode>
 );
 reportWebVitals();
+
+{/*<Route path="html" element={<Html/>}/>*/
+}
+{/*<Route path="css" element={<Css/>}/>*/
+}
+{/*<Route path="javascript" element={<Javascript/>}/>*/
+}
