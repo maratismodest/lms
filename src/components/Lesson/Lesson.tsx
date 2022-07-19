@@ -1,10 +1,10 @@
+import Button from "@mui/material/Button";
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
 import ReactMarkdown from 'react-markdown';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import remarkGfm from "remark-gfm";
 import {LessonProps} from "../Course/Course";
-
 
 const getLesson = async (name: string, id: string) => {
     try {
@@ -30,12 +30,12 @@ const Lesson = () => {
         return null
     }
 
-
-    console.log('name, id', name, id)
-
     return (
         <div>
             <ReactMarkdown children={lesson.markdown} remarkPlugins={[remarkGfm]}/>
+            <Button component={Link} to={'quiz'} color="primary" variant={"contained"}>
+                Проверка знаний
+            </Button>
         </div>
     );
 };

@@ -17,12 +17,21 @@ const Lesson = sequelize.define("lesson", {
     timestamps: false
 });
 
+const Quiz = sequelize.define("quiz", {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    text: {type: DataTypes.STRING},
+    options: {type: DataTypes.ARRAY(DataTypes.STRING)},
+}, {
+    timestamps: false
+});
+
 Course.hasMany(Lesson);
 Lesson.belongsTo(Course);
 
 module.exports = {
     Course,
-    Lesson
+    Lesson,
+    Quiz
 };
 
 

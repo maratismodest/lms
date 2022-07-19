@@ -7,6 +7,7 @@ import {store} from './app/store';
 import Course from "./components/Course/Course";
 import Lesson from "./components/Lesson/Lesson";
 import MainLayout from "./components/MainLayout";
+import Quiz from "./components/Quiz/Quiz";
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 
@@ -22,6 +23,7 @@ root.render(
                         <Route path="/" element={<App/>}/>
                         <Route path="/:name" element={<Course/>}/>
                         <Route path="/:name/:id" element={<Lesson/>}/>
+                        <Route path="/:name/:id/quiz" element={<Quiz/>}/>
                     </Routes>
                 </MainLayout>
             </BrowserRouter>
@@ -29,10 +31,3 @@ root.render(
     </React.StrictMode>
 );
 reportWebVitals();
-
-{/*<Route path="html" element={<Html/>}/>*/
-}
-{/*<Route path="css" element={<Css/>}/>*/
-}
-{/*<Route path="javascript" element={<Javascript/>}/>*/
-}
