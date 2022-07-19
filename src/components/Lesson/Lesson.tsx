@@ -1,8 +1,19 @@
+import axios from "axios";
 import React, {useEffect, useState} from 'react';
 import ReactMarkdown from 'react-markdown';
 import {useParams} from "react-router-dom";
 import remarkGfm from "remark-gfm";
-import {LessonProps, lessonsBase} from "../Course/Course";
+import {LessonProps} from "../Course/Course";
+
+
+const getLesson = async (name: string, id: string) => {
+    try {
+        const res = await axios.get('http://localhost:8080/api/course/' + name + '/' + id)
+        return res.data as LessonProps
+    } catch (e) {
+        console.log('e', e)
+    }
+}
 
 const Lesson = () => {
 
@@ -11,8 +22,7 @@ const Lesson = () => {
     const {name, id} = useParams()
 
     useEffect(() => {
-        const lesson = lessonsBase.find(x => x.name === id)
-        setLesson(lesson)
+        getLesson(name as string, id as string).then((lesson) => setLesson(lesson))
 
     }, [name, id])
 

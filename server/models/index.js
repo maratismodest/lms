@@ -5,12 +5,16 @@ const Course = sequelize.define("course", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
     markdown: {type: DataTypes.STRING},
+}, {
+    timestamps: false
 });
 
 const Lesson = sequelize.define("lesson", {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
     markdown: {type: DataTypes.STRING},
+}, {
+    timestamps: false
 });
 
 Course.hasMany(Lesson);

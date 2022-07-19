@@ -207,16 +207,23 @@ const getCourses = async () => {
     }
 }
 
+const getCourse = async (name: string) => {
+    try {
+        const res = await axios.get('http://localhost:8080/api/course/' + name)
+        return res.data as CourseProps
+    } catch (e) {
+        console.log('e', e)
+    }
+}
+
 const Course = () => {
     const [course, setCourse] = useState<CourseProps | undefined>(undefined)
     const {name} = useParams()
     useEffect(() => {
-        // const course = coursesBase.find(x => x.name === name)
-        getCourses().then((course) => {
+        getCourse(name as string).then((course) => {
+            console.log('course',course)
             setCourse(course)
         })
-
-
     }, [name])
 
     if (!course) {
@@ -225,8 +232,8 @@ const Course = () => {
 
     const {lessons} = course
 
-    console.log('course',course)
-    console.log('lessons',lessons)
+    console.log('course', course)
+    console.log('lessons', lessons)
 
     if (lessons.length === 0) {
         return (
